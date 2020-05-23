@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 # In[29]:
 
 
-stock = 'hcci'
+stock = 'vnet'
  
 df = web.DataReader(stock, data_source='yahoo', start='01-01-2019')
 
