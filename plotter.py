@@ -2,8 +2,7 @@ import pandas as pd
 from pandas_datareader import data as web
 import plotly.graph_objects as go
 
-stock = 'ddog'
- 
+stock = 'ddog' 
 
 def GetSMA(ticker):
     df = web.DataReader(ticker, data_source='yahoo', start='01-01-2019')
@@ -66,4 +65,9 @@ def GetSMA(ticker):
     # fig.write_html("Microsoft(MSFT) Moving Averages.html")
     fig.show()
 
-GetSMA("DDOG")
+df=pd.read_csv("E:\projects\AlgoTrade\companylist.csv")
+df2=df.loc[df['Sector']=='Technology'].head()
+for key, value in df2.Symbol.iteritems(): 
+    GetSMA(value)
+
+# GetSMA("DDOG")
