@@ -25,6 +25,7 @@ def GetSMA(ticker):
 
     # Calculate and define moving average of 50 periods
     avg_50 = df.Close.rolling(window=50, min_periods=1).mean()
+    diff = avg_50.subtract(avg_30)
 
     trace2 = {
         'x': df.index,
@@ -50,7 +51,19 @@ def GetSMA(ticker):
         'name': 'Moving Average of 50 periods'
     }
 
-    data = [trace1, trace2, trace3]
+    trace4 = {
+        'x': df.index,
+        'y': diff,
+        'type': 'scatter',
+        'mode': 'lines',
+        'line': {
+            'width': 1,
+            'color': 'green'
+        },
+        'name': 'Moving average Diff'
+    }
+
+    data = [trace1, trace2, trace3, trace4]
     # Config graph layout
     layout = go.Layout({
         'title': {
